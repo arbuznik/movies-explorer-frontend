@@ -1,0 +1,30 @@
+.nav-bar {
+  background-color: #000;
+  height: 66px;
+  display: flex;
+}
+
+.nav-bar__links {
+  margin: auto;
+  display: flex;
+  column-gap: 24px;
+}
+
+.nav-bar__link {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #FFF;
+}
+
+@media (min-width: 768px) {
+  .nav-bar__links {
+    column-gap: 40px;
+  }
+  .nav-bar__link {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.23;
+    color: #FFF;
+  }
+}

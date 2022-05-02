@@ -8,30 +8,25 @@ import Login from '../pages/Login/Login';
 import Logout from '../pages/Logout/Logout';
 import Register from '../pages/Register/Register';
 import NotFound from '../pages/NotFound/NotFound';
+import routes from '../../config/routes';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
         <Route element={<Layout />}>
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path={routes.home.path} element={<Main />} />
+          <Route path={routes.movies.path} element={<Movies />} />
+          <Route path={routes.savedMovies.path} element={<SavedMovies />} />
         </Route>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signout" element={<Logout />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path={routes.profile.path} element={<Profile />} />
+        <Route path={routes.login.path} element={<Login />} />
+        <Route path={routes.register.path} element={<Register />} />
+        <Route path={routes.logout.path} element={<Logout />} />
+        <Route path={routes.notFound.path} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default Router;
-
-// по роуту / отображается страница «О проекте»;
-// по роуту /movies отображается страница «Фильмы»;
-// по роуту /saved-movies отображается страница «Сохранённые фильмы»;
-// по роуту /profile отображается страница с профилем пользователя;
-// по роутам /signin и /signup отображаются страницы авторизации и регистрации.

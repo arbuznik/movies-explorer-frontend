@@ -1,0 +1,27 @@
+.section {
+  width: 100%;
+}
+
+.section__container {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 18px;
+  row-gap: 60px;
+}
+
+@media (min-width: 768px) {
+  .section__container {
+    padding: 90px 50px;
+    row-gap: 70px;
+  }
+
+  .section__container_color_grey {
+    background-color: #F5F5F5;;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section__container {
+    padding: 110px 70px;
+  }
+}
