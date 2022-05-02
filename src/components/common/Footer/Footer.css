@@ -3,6 +3,7 @@
   flex-direction: column;
   row-gap: 30px;
   margin: 79px 10px 10px;
+  max-width: 1140px;
 }
 
 .footer__header {
@@ -99,6 +100,7 @@
 
 @media (min-width: 1280px) {
   .footer {
-    margin: 79px 70px 20px;
+    width: 1140px;
+    margin: 79px auto 20px;
   }
 }

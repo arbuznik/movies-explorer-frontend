@@ -1,0 +1,121 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.search__form {
+  display: grid;
+  grid-template-columns: auto 44px;
+  column-gap: 10px;
+  margin-top: 80px;
+}
+
+.search__form-input {
+  background-color: #F9F9F9;
+  border: none;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #A0A0A0;
+  padding-left: 13px;
+}
+
+.search_form-button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: #3456F3 url("../../../../images/search-button-icon.svg") no-repeat center;
+  cursor: pointer;
+}
+
+.search__short-movie-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.search__short-movie-toggle {
+  display: flex;
+  position: relative;
+  height: 14px;
+  column-gap: 13px;
+  justify-content: center;
+  align-items: center;
+  margin: 47px 0 39px;
+}
+
+.search__short-movie-switch {
+  display: none;
+  opacity: 0;
+}
+
+.search__short-movie-switch:after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 30px;
+  height: 30px;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 1px 3px 6px #666666;
+}
+
+.search__short-movie-label {
+  position: relative;
+  width: 34px;
+  height: 14px;
+  display: inline-block;
+  background: #2BE080;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.search__short-movie-label:after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 10px;
+  height: 10px;
+  background: #FFF;
+  border-radius: 50%;
+}
+
+.search__short-movie-switch:checked + .search__short-movie-label {
+  background: #2BE080;
+}
+
+.search__short-movie-switch:checked + .search__short-movie-label:after {
+  left: auto;
+  right: 2px;
+}
+
+.search__divider {
+  height: 1px;
+  background-color: #E8E8E8;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .search {
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .search {
+    padding: 0 70px;
+  }
+
+  .search__short-movie-toggle {
+    margin: 28px 0 39px;
+  }
+}
