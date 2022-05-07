@@ -1,20 +1,22 @@
-import { Link } from 'react-router-dom';
-import logo from "../../../images/header-logo.svg";
-import "./Header.css";
-import routes from '../../../config/routes';
+import AuthHeader from './AuthHeader/AuthHeader';
+import NonAuthHeader from './NonAuthHeader/NonAuthHeader';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
-  return (
-    <header className="header">
-      <div className="header__container">
-        <img className="header__image" src={logo} alt="logo" />
-        <nav className="header__links">
-          <Link to={routes.register.path} className="header__link_type_plain">Регистрация</Link>
-          <Link to={routes.login.path} className="header__link_type_filled">Войти</Link>
-        </nav>
-      </div>
-    </header>
-  )
+  // console.log(`isAuth: ${isAuth}`)
+
+  const { pathname } = useLocation();
+  // return isAuth ? (
+  //   <AuthHeader />
+  // ) : (
+  //   <NonAuthHeader />
+  // );
+
+  return pathname !== '/' ? (
+    <AuthHeader />
+  ) : (
+    <NonAuthHeader />
+  );
 };
 
 export default Header;

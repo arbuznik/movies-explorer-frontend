@@ -1,5 +1,5 @@
 import MovieCardList from '../../common/MovieCardList/MovieCardList';
-import Search from './Search/Search';
+import Search from '../../common/Search/Search';
 
 const Movies = () => {
   return (

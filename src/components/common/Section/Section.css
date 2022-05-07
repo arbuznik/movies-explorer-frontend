@@ -7,6 +7,8 @@
   flex-direction: column;
   padding: 70px 18px;
   row-gap: 60px;
+  max-width: 1280px;
+  margin: auto;
 }
 
 @media (min-width: 768px) {
@@ -15,7 +17,7 @@
     row-gap: 70px;
   }
 
-  .section__container_color_grey {
+  .section_color_grey {
     background-color: #F5F5F5;;
   }
 }

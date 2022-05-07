@@ -1,6 +1,12 @@
+import MovieCardList from '../../common/MovieCardList/MovieCardList';
+import Search from '../../common/Search/Search';
+
 const SavedMovies = () => {
   return (
-    <p>Saved Movies List</p>
+    <main className="movies">
+      <Search />
+      <MovieCardList />
+    </main>
   );
 };
 
