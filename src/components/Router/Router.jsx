@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from '../pages/Main/Main';
-import Layout from '../Layout/Layout';
+import Layout from '../pages/Layout/Layout';
 import Movies from '../pages/Movies/Movies';
 import SavedMovies from '../pages/SavedMovies/SavedMovies';
 import Profile from '../pages/Profile/Profile';

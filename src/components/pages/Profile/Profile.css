@@ -84,6 +84,11 @@
   font-size: 12px;
   line-height: 15px;
   margin-top: auto;
+  cursor: pointer;
+}
+
+.profile__form-button:hover {
+  background: #092cde;
 }
 
 .profile__edit-button {
@@ -96,6 +101,11 @@
   height: 15px;
   padding: 0;
   align-self: end;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  color: #333333;
 }
 
 .profile__logout-link {
@@ -107,10 +117,8 @@
   text-decoration: none;
 }
 
-.profile__link {
-  text-decoration: none;
-  color: #3456F3;
-  margin-bottom: 30px;
+.profile__logout-link:hover {
+  color: #ff002a;
 }
 
 @media (min-width: 768px) {

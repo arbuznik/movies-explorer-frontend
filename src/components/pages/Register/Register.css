@@ -60,7 +60,12 @@
   font-size: 12px;
   line-height: 15px;
   margin-top: auto;
+  cursor: pointer;
 }
+
+ .register__form-button:hover {
+   background: #092cde;
+ }
 
 .register__text{
   font-weight: 400;
@@ -74,6 +79,10 @@
   text-decoration: none;
   color: #3456F3;
   margin-bottom: 30px;
+}
+
+.register__link:hover {
+  color: #092cde;
 }
 
 @media (min-width: 768px) {

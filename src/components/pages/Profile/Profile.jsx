@@ -22,13 +22,28 @@ const Profile = () => {
         {isEditing ? (
           <form className="profile__form">
             <label htmlFor="name" className="profile__form_label">Имя
-              <input id="name" type="email" className="profile__form-input" />
+              <input
+                id="name"
+                type="email"
+                className="profile__form-input"
+                required
+              />
             </label>
             <label htmlFor="email" className="profile__form_label">E-mail
-              <input id="email" type="email" className="profile__form-input" />
+              <input
+                id="email"
+                type="email"
+                className="profile__form-input"
+                required
+              />
             </label>
             <label htmlFor="password" className="profile__form_label">Пароль
-              <input id="password" type="password" className="profile__form-input" />
+              <input
+                id="password"
+                type="password"
+                className="profile__form-input"
+                required
+              />
             </label>
             <button type="submit" className="profile__form-button">Сохранить</button>
           </form>

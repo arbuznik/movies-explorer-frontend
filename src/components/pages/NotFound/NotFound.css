@@ -33,6 +33,7 @@
   border: none;
   background-color: #FFF;
   margin: 0 auto 30px;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

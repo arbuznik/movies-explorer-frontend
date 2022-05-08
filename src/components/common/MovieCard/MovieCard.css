@@ -40,6 +40,15 @@
   border: none;
   align-self: center;
   padding: 0;
+  cursor: pointer;
+}
+
+.movie-card__save-button_type_saved {
+  background: url("../../../images/save-button-icon-type-saved.svg") no-repeat center;
+}
+
+.movie-card__save-button_type_saved-cross {
+  background: url("../../../images/save-button-icon-type-saved-cross.svg") no-repeat center;
 }
 
 .movie-card__cover {

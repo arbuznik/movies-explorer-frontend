@@ -29,8 +29,12 @@
   height: 44px;
   border: none;
   border-radius: 8px;
-  background: #3456F3 url("../../../images/search-button-icon.svg") no-repeat center;
+  background: #3456f3 url("../../../images/search-button-icon.svg") no-repeat center;
   cursor: pointer;
+}
+
+.search_form-button:hover {
+  background-color: #092cde;
 }
 
 .search__short-movie-text {

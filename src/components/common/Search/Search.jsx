@@ -8,7 +8,12 @@ const Search = () => {
   return (
     <section className="search">
       <form className="search__form">
-        <input type="text" className="search__form-input" placeholder="Фильм" />
+        <input
+          type="text"
+          className="search__form-input"
+          placeholder="Фильм"
+          required
+        />
         <button type="submit" className="search_form-button" />
       </form>
       <div className="search__short-movie-toggle">

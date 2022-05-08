@@ -1,6 +1,6 @@
 import logo from '../../../../images/header-logo.svg';
 import SideMenu from '../../SideMenu/SideMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import routes from '../../../../config/routes';
 import '../Header.css';
@@ -8,12 +8,23 @@ import './AuthHeader.css';
 
 const AuthHeader = () => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [showSideMenu, setShowSideMenu] = useState(false);
+
+  const handleWindowResize = () => {
+    setShowSideMenu(window.screen.width >= 1024);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize)
+
+    return () => window.removeEventListener('resize', handleWindowResize)
+  }, [])
 
   const toggleMenu = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
   }
 
-  const headerContent = window.screen.width >= 1024 ? (
+  const headerContent = showSideMenu ? (
     <>
       <nav className="header__links">
         <NavLink to={routes.movies.path} className={({ isActive }) => isActive ? "header__link header__link_type_active" : "header__link"}>Фильмы</NavLink>

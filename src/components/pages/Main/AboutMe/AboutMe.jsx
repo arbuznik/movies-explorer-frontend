@@ -2,7 +2,6 @@ import './AboutMe.css';
 import studentPhoto from '../../../../images/student-photo.jpg';
 import SectionHeader from '../../../common/SectionHeader/SectionHeader';
 import Section from '../../../common/Section/Section';
-import { Link } from 'react-router-dom';
 
 const AboutProject = () => {
   return (
@@ -25,24 +24,39 @@ const AboutProject = () => {
           <h4 className="about-me__portfolio-header">Портфолио</h4>
           <ul className="about-me__portfolio-links">
             <li className="about-me__portfolio-link-container">
-              <Link className="about-me__portfolio-link" to="#">
+              <a
+                className="about-me__portfolio-link"
+                href="https://arbuznik-how-to-learn.netlify.app"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <p className="about-me__portfolio-link-text">Статичный сайт</p>
                 <p className="about-me__portfolio-link-text">↗</p>
-              </Link>
+              </a>
               <div className="about-me__portfolio-link-divider"/>
             </li>
             <li className="about-me__portfolio-link-container">
-              <Link className="about-me__portfolio-link" to="#">
+              <a
+                className="about-me__portfolio-link"
+                href="https://arbuznik.github.io/russian-travel/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <p className="about-me__portfolio-link-text">Адаптивный сайт</p>
                 <p className="about-me__portfolio-link-text">↗</p>
-              </Link>
+              </a>
               <div className="about-me__portfolio-link-divider"/>
             </li>
             <li className="about-me__portfolio-link-container">
-              <Link className="about-me__portfolio-link" to="#">
+              <a
+                className="about-me__portfolio-link"
+                href="https://arbuznik.github.io/mesto-react/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <p className="about-me__portfolio-link-text">Одностраничное приложение</p>
                 <p className="about-me__portfolio-link-text">↗</p>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

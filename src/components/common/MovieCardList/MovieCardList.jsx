@@ -8,9 +8,6 @@ const MovieCardList = () => {
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
-      <div className="movie-card-list__show-more">
-        <button className="movie-card-list__show-more-button">Ещё</button>
-      </div>
     </section>
   );
 };
