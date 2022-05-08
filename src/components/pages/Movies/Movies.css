@@ -10,6 +10,11 @@
   border: none;
   background-color: #F9F9F9;
   border-radius: 6px;
+  cursor: pointer;
+}
+
+.movies__show-more-button:hover {
+  background-color: #dcdcdc;
 }
 
 @media (min-width: 768px) {
