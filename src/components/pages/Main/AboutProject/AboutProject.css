@@ -1,0 +1,122 @@
+.about-project__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+}
+
+.about-project__article {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.about-project__article-title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  margin: 0;
+}
+
+.about-project__article-paragraph {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.about-project__progress {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+.about-project__progress-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.about-project__progress-weeks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  margin: 0;
+  padding: 11px;
+  box-sizing: border-box;
+}
+
+.about-project__progress-weeks_type_green {
+  background-color: #2BE080;
+}
+
+.about-project__progress-weeks_type_grey {
+  background-color: #F2F2F2;
+}
+
+.about-project__caption {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  color: #A0A0A0;
+  margin: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about-project__content {
+    flex-direction: row;
+    column-gap: 30px;
+  }
+
+  .about-project__article-title {
+    font-size: 20px;
+  }
+
+  .about-project__article-paragraph {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .about-project__progress {
+    margin-top: 20px;
+    grid-template-columns: 20% 80%;
+  }
+
+  .about-project__progress-section {
+    row-gap: 14px;
+  }
+
+  .about-project__progress-weeks {
+    height: 50px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+
+  .about-project__caption {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .about-project__content {
+    column-gap: 40px;
+  }
+
+  .about-project__article-paragraph {
+    font-size: 14px;
+    line-height: 1.43;
+  }
+
+  .about-project__progress {
+    margin-top: 40px;
+  }
+
+  .about-project__progress-weeks {
+    height: 36px;
+  }
+}

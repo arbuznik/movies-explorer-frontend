@@ -1,0 +1,28 @@
+.movie-card-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10px 30px;
+  row-gap: 16px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .movie-card-list {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 30px;
+    row-gap: 36px;
+    padding: 40px 30px 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .movie-card-list {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 24px;
+    row-gap: 30px;
+    padding: 70px 70px;
+  }
+}

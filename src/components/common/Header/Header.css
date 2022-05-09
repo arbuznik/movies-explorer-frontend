@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  margin: auto;
+  height: 74px;
+  background-color: #073042;
+  box-sizing: border-box;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  max-width: 1140px;
+  padding: 18px 14px;
+}
+
+.header__image {
+  width: 38px;
+  height: 38px;
+}
+
+.header__links {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+@media (min-width: 768px) {
+  .header__container {
+    padding: 18px 30px;
+  }
+
+  .header__links {
+    column-gap: 30px;
+  }
+}

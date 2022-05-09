@@ -1,0 +1,24 @@
+.section-header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 28px;
+}
+
+.section-header__title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  margin: 0;
+}
+
+.section-header__divider {
+  height: 1px;
+  background-color: #000;
+}
+
+@media (min-width: 768px) {
+
+  .section-header__title {
+    font-size: 22px;
+  }
+}

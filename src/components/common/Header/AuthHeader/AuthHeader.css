@@ -1,0 +1,47 @@
+.header_type_auth {
+  background-color: #FFF;
+}
+
+.header__menu-button {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: url("../../../../images/header-menu-icon.svg");
+  cursor: pointer;
+}
+
+.header__link {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.header__link_type_active {
+  font-weight: 500;
+}
+
+.profile__account-link {
+  display: flex;
+  column-gap: 13px;
+  align-items: center;
+  max-width: fit-content;
+  align-self: center;
+  text-decoration: none;
+}
+
+.profile__account-link-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  margin: 0;
+}
+
+.profile__account-lint-icon {
+  width: 30px;
+  height: 30px;
+  background: #F9F9F9 url("../../../../images/profile-button-icon.svg") no-repeat center;
+  border-radius: 6px;
+}
