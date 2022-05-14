@@ -21,52 +21,6 @@
   margin: 50px auto 80px;
 }
 
-.register__form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.register__form_label {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
-  color: #A0A0A0;
-}
-
-.register__form-input{
-  height: 46px;
-  background: #F9F9F9;
-  border-radius: 8px;
-  border: none;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 16px;
-  padding-left: 15px;
-}
-
-.register__form-button {
-  height: 45px;
-  background: #3456F3;
-  border-radius: 3px;
-  color: #FFFFFF;
-  border: none;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  margin-top: auto;
-  cursor: pointer;
-}
-
- .register__form-button:hover {
-   background: #092cde;
- }
-
 .register__text{
   font-weight: 400;
   font-size: 12px;
@@ -88,7 +42,7 @@
 @media (min-width: 768px) {
   .register {
     padding: 70px 0;
-    grid-template-rows: min-content min-content minmax(auto, 380px) min-content;
+    grid-template-rows: min-content min-content minmax(auto, min-content) min-content;
   }
 
   .register__header-logo {
@@ -97,11 +51,6 @@
 
   .register__title {
     margin: 50px 0 80px;
-  }
-
-  .register__form-button {
-    font-size: 14px;
-    line-height: 17px;
   }
 
   .register__text{
