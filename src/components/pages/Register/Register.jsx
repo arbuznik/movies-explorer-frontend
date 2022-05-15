@@ -1,7 +1,7 @@
 import headerLogo from '../../../images/header-logo.svg';
 import routes from '../../../config/routes';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useFormWithValidation } from '../../../hooks/useFormWithValidation';
 import Form from '../../common/Form/Form';
 import { mainApi } from '../../../utils/MainApi';
@@ -20,18 +20,28 @@ const Register = () => {
     evt.preventDefault();
 
     mainApi.register(userData)
-      .then(response => {
-        setUserContext(response.email);
-        navigate(routes.movies.path);
+      .then(() => {
+        mainApi.login({ email, password })
+          .then(res => {
+            if (res.message === 'Auth successfull') {
+              mainApi.getLoggedInUser()
+                .then(user => {
+                  setUserContext(user);
+                })
+                .catch(mainApi.handleApiError);
+            }
+          })
       })
       .catch(error => {
         setApiError(error)
       })
   }
 
-  if (user) {
-    navigate(routes.movies.path);
-  }
+  useEffect(() => {
+    if (user) {
+      navigate(routes.movies.path);
+    }
+  })
 
   return (
     <main className="register">

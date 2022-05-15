@@ -23,6 +23,28 @@ class MainApi {
       .then(this._handleApiResponse)
   }
 
+  logout() {
+    return fetch(this._baseUrl + '/signout', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        ...this._headers
+      },
+    })
+      .then(this._handleApiResponse)
+  }
+
+  getLoggedInUser() {
+    return fetch(this._baseUrl + '/users/me', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        ...this._headers,
+      },
+    })
+      .then(this._handleApiResponse)
+  }
+
   _handleApiResponse(response) {
     if (response.ok) {
       return response.json();
@@ -30,11 +52,18 @@ class MainApi {
 
     return Promise.reject(`Ошибка: ${response.status}`);
   }
+
+  handleApiError(error) {
+    console.log(error);
+  }
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'https://api.arbuznik.diploma.nomoredomains.xyz',
+  baseUrl: 'http://localhost:3001',
   headers: {
     'Content-Type': 'application/json'
   }
 });
+
+// TODO: change base URL to:
+// https://api.arbuznik.diploma.nomoredomains.xyz

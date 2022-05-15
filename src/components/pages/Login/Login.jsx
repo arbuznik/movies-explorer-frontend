@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import headerLogo from '../../../images/header-logo.svg';
 import routes from '../../../config/routes';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,10 +20,13 @@ const Login = () => {
     evt.preventDefault();
 
     mainApi.login(userData)
-      .then(user => {
-        if (user.message === 'Auth successfull') {
-          setUserContext(userData.email);
-          navigate(routes.movies.path);
+      .then(res => {
+        if (res.message === 'Auth successfull') {
+          mainApi.getLoggedInUser()
+            .then(user => {
+              setUserContext(user);
+            })
+            .catch(mainApi.handleApiError);
         }
       })
       .catch(error => {
@@ -31,9 +34,11 @@ const Login = () => {
       })
   }
 
-  if (user) {
-    navigate(routes.movies.path);
-  }
+  useEffect(() => {
+    if (user) {
+      navigate(routes.movies.path);
+    }
+  })
 
   return (
     <main className="login">

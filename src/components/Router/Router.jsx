@@ -15,14 +15,18 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-          <Route element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }>
+          <Route element={<Layout />}>
             <Route path={routes.home.path} element={<Main />} />
-            <Route path={routes.movies.path} element={<Movies />} />
-            <Route path={routes.savedMovies.path} element={<SavedMovies />} />
+            <Route path={routes.movies.path} element={
+              <ProtectedRoute>
+                <Movies />
+              </ProtectedRoute>
+            } />
+            <Route path={routes.savedMovies.path} element={
+              <ProtectedRoute>
+                <SavedMovies />
+              </ProtectedRoute>
+            } />
           </Route>
           <Route path={routes.profile.path} element={
             <ProtectedRoute>
