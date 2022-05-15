@@ -1,63 +1,93 @@
+import React, { useContext, useState } from 'react';
 import routes from '../../../config/routes';
 import { Link } from 'react-router-dom';
 import "./Profile.css";
 import AuthHeader from '../../common/Header/AuthHeader/AuthHeader';
-import { useState } from 'react';
+import { UserContext } from '../../../contexts/UserContext';
+import Form from '../../common/Form/Form';
+import { useFormWithValidation } from '../../../hooks/useFormWithValidation';
+import { mainApi } from '../../../utils/MainApi';
 
 const Profile = () => {
-  const userName = 'Виталий';
-  const userEmail = 'pochta@yandex.ru';
+  const { user, setUserContext } = useContext(UserContext);
+  const { name, email } = user;
+
+  const { values: userData, errors, isValid, handleChange } = useFormWithValidation();
+  const { newName = name, newEmail = email } = userData;
 
   const [isEditing, setIsEditing] = useState(false);
+  const [apiError, setApiError] = useState(null);
 
   const handleEditProfile = () => {
     setIsEditing(true);
+  }
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+
+    mainApi.updateUser({ name: newName, email: newEmail })
+      .then(user => {
+        setUserContext(user);
+        setIsEditing(false);
+      })
+      .catch(error => {
+        setApiError(error)
+      })
   }
 
   return (
     <>
       <AuthHeader />
       <main className="profile">
-        <h1 className="profile__title">{`Привет, ${userName}!`}</h1>
+        <h1 className="profile__title">{`Привет, ${name}!`}</h1>
         {isEditing ? (
-          <form className="profile__form">
-            <label htmlFor="name" className="profile__form_label">Имя
+          <Form onSubmit={handleFormSubmit}>
+            <label htmlFor="name" className="form__label">Имя
               <input
                 id="name"
-                type="email"
-                className="profile__form-input"
+                name="newName"
+                type="text"
+                className={`form__input ${errors.name && 'form__input_type_error'}`}
                 required
+                value={newName}
+                minLength={2}
+                maxLength={30}
+                onChange={handleChange}
               />
+              <p className="form__input-error">{errors.name}</p>
             </label>
-            <label htmlFor="email" className="profile__form_label">E-mail
+            <label htmlFor="email" className="form__label">E-mail
               <input
                 id="email"
                 type="email"
-                className="profile__form-input"
+                name="newEmail"
+                className={`form__input ${errors.email && 'form__input_type_error'}`}
                 required
+                value={newEmail}
+                onChange={handleChange}
               />
+              <p className="form__input-error">{errors.email}</p>
             </label>
-            <label htmlFor="password" className="profile__form_label">Пароль
-              <input
-                id="password"
-                type="password"
-                className="profile__form-input"
-                required
-              />
-            </label>
-            <button type="submit" className="profile__form-button">Сохранить</button>
-          </form>
+            {apiError && <p className="form__input-error">{apiError}</p>}
+            <button
+              type="submit"
+              className="form__button"
+              disabled={!isValid}
+            >
+              Сохранить
+            </button>
+          </Form>
         ) : (
           <>
             <div className="profile__info">
               <div className="profile__info-item">
                 <p className="profile__info-subtitle">Имя</p>
-                <p className="profile__info-value">{userName}</p>
+                <p className="profile__info-value">{name}</p>
               </div>
               <div className="profile__info-divider" />
               <div className="profile__info-item">
                 <p className="profile__info-subtitle">E-mail</p>
-                <p className="profile__info-value">{userEmail}</p>
+                <p className="profile__info-value">{email}</p>
               </div>
             </div>
             <button className="profile__edit-button" onClick={handleEditProfile}>Редактировать</button>

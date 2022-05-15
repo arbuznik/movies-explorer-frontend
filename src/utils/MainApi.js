@@ -45,6 +45,18 @@ class MainApi {
       .then(this._handleApiResponse)
   }
 
+  updateUser(userData) {
+    return fetch(this._baseUrl + '/users/me', {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        ...this._headers,
+      },
+      body: JSON.stringify(userData)
+    })
+      .then(this._handleApiResponse)
+  }
+
   _handleApiResponse(response) {
     if (response.ok) {
       return response.json();
