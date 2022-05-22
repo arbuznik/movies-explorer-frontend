@@ -117,11 +117,8 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.arbuznik.diploma.nomoredomains.xyz',
   headers: {
     'Content-Type': 'application/json'
   }
 });
-
-// TODO: change base URL to:
-// https://api.arbuznik.diploma.nomoredomains.xyz
