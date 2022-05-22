@@ -1,23 +1,68 @@
 import './Search.css';
+import { useEffect, useState } from 'react';
+import { getFilteredMovies } from '../../../utils/getFilteredMovies';
 
-const Search = () => {
-  const handleChange = evt => {
-    console.log(evt.target.checked)
+
+const Search = ({
+  movies,
+  setSearchedMovies,
+  shortMoviesSwitch,
+  handleShortMoviesToggle,
+  searchQuery,
+  handleSearchQueryChange,
+}) => {
+  const [searchValue, setSearchValue] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    setSearchValue(searchQuery);
+    setSearchedMovies(getFilteredMovies(movies, searchQuery, shortMoviesSwitch));
+  }, [movies, searchQuery, shortMoviesSwitch]);
+
+  const handleShortMoviesSwitchClick = evt => {
+    handleShortMoviesToggle(evt.target.checked);
   };
+
+  const handleSearchChange = evt => {
+    setSearchValue(evt.target.value);
+  }
+
+  const handleSearchSubmit = (evt) => {
+    evt.preventDefault();
+
+    if (!searchValue) {
+      setError('Нужно ввести ключевое слово');
+    } else {
+      setError(null);
+      handleSearchQueryChange(searchValue);
+      setSearchedMovies(getFilteredMovies(movies, searchValue, shortMoviesSwitch));
+    }
+  }
 
   return (
     <section className="search">
-      <form className="search__form">
+      <form
+        className="search__form"
+        onSubmit={handleSearchSubmit}
+      >
         <input
           type="text"
           className="search__form-input"
           placeholder="Фильм"
-          required
+          value={searchValue}
+          onChange={handleSearchChange}
         />
         <button type="submit" className="search_form-button" />
       </form>
+      {error && <p className="search__input-error">{error}</p>}
       <div className="search__short-movie-toggle">
-        <input onChange={handleChange} id="movie-switch" type="checkbox" className="search__short-movie-switch" />
+        <input
+          id="movie-switch"
+          type="checkbox"
+          className="search__short-movie-switch"
+          checked={shortMoviesSwitch}
+          onChange={handleShortMoviesSwitchClick}
+        />
         <label htmlFor="movie-switch" className="search__short-movie-label" />
         <p className="search__short-movie-text">Короткометражки</p>
       </div>

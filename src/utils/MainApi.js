@@ -57,6 +57,52 @@ class MainApi {
       .then(this._handleApiResponse)
   }
 
+  getMovies() {
+    return fetch(this._baseUrl + '/movies', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        ...this._headers
+      },
+    })
+      .then(this._handleApiResponse)
+  }
+
+  saveMovie(movie) {
+    return fetch(this._baseUrl + '/movies', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        ...this._headers
+      },
+      body: JSON.stringify({
+        movieId: movie.id,
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+        image: `https://api.nomoreparties.co${movie.image.url}`,
+        trailerLink: movie.trailerLink,
+        thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
+      })
+    })
+      .then(this._handleApiResponse)
+  }
+
+  deleteMovie(movieId) {
+    return fetch(this._baseUrl + '/movies/' +movieId, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        ...this._headers
+      },
+    })
+      .then(this._handleApiResponse)
+  }
+
   _handleApiResponse(response) {
     if (response.ok) {
       return response.json();

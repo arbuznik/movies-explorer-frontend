@@ -1,12 +1,12 @@
-import movies from '../../../mockData/movies.json';
 import './MovieCardList.css';
 import MovieCard from '../MovieCard/MovieCard';
 
-const MovieCardList = () => {
+const MovieCardList = ({ movies, setSavedMovies }) => {
+
   return (
     <section className="movie-card-list">
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
+        <MovieCard key={movie.id} movie={movie} setSavedMovies={setSavedMovies} />
       ))}
     </section>
   );

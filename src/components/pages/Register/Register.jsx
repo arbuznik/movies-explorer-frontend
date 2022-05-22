@@ -87,7 +87,7 @@ const Register = () => {
           />
           <p className="form__input-error">{errors.password}</p>
         </label>
-        {apiError && <p className="form__input-error">{apiError}</p>}
+        {apiError && <p className="form__input-error">{apiError.message}</p>}
         <button
           type="submit"
           className="form__button"
