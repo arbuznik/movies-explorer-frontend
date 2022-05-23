@@ -6,6 +6,7 @@ import { useFormWithValidation } from '../../../hooks/useFormWithValidation';
 import Form from '../../common/Form/Form';
 import { mainApi } from '../../../utils/MainApi';
 import { UserContext } from '../../../contexts/UserContext';
+import { EMAIL_VALIDATION_PATTERN } from '../../../constants/constants';
 import "./Login.css";
 
 const Login = () => {
@@ -42,7 +43,9 @@ const Login = () => {
 
   return (
     <main className="login">
-      <img src={headerLogo} alt="Logo" className="login__header-logo" />
+      <Link to={routes.home.path} >
+        <img src={headerLogo} alt="Logo" className="login__header-logo" />
+      </Link>
       <h1 className="login__title">Рады видеть!</h1>
       <Form onSubmit={handleFormSubmit}>
         <label htmlFor="email" className="form__label">E-mail
@@ -50,6 +53,7 @@ const Login = () => {
           id="email"
           type="email"
           name="email"
+          pattern={EMAIL_VALIDATION_PATTERN}
           className={`form__input ${errors.email && 'form__input_type_error'}`}
           required
           value={email}
@@ -70,7 +74,7 @@ const Login = () => {
         />
         <p className="form__input-error">{errors.password}</p>
         </label>
-        {apiError && <p className="form__input-error">{apiError.message}</p>}
+        {apiError && <p className="form__input-error">{apiError}</p>}
         <button
           type="submit"
           className="form__button"

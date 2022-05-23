@@ -44,7 +44,9 @@ const AuthHeader = () => {
   return (
     <header className="header header_type_auth">
       <div className="header__container">
-        <img className="header__image" src={logo} alt="logo" />
+        <Link to={routes.home.path} >
+          <img className="header__image" src={logo} alt="logo" />
+        </Link>
         {headerContent}
       </div>
       <SideMenu isOpen={isSideMenuOpen} onClick={toggleMenu} />

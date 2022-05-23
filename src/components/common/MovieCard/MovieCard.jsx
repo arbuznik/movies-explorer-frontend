@@ -29,8 +29,7 @@ const MovieCard = ({ movie, setSavedMovies }) => {
   const handleSaveClick = () => {
    if (isMovieSaved) {
       mainApi.deleteMovie(movie._id)
-        .then(res => {
-          console.log('movie deleted: ', res);
+        .then(_ => {
           setIsMovieSaved(!isMovieSaved);
           setSavedMovies(movies => movies.filter(m => m._id !== movie._id))
         })
@@ -58,7 +57,9 @@ const MovieCard = ({ movie, setSavedMovies }) => {
           onClick={handleSaveClick}
         />
       </div>
-      <img src={`https://api.nomoreparties.co${thumbnail}`} alt={nameRU} className="movie-card__cover" />
+      <a href={movie.trailerLink} className="movie-card__link" target="_blank">
+        <img src={`https://api.nomoreparties.co${thumbnail}`} alt={nameRU} className="movie-card__cover" />
+      </a>
     </article>
   );
 };

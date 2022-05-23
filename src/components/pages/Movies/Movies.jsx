@@ -116,6 +116,7 @@ const Movies = () => {
           searchQuery={searchQuery}
           handleSearchQueryChange={handleSearchQueryChange}
         />
+        {isLoading && <Preloader />}
       </main>
     )
   }

@@ -6,6 +6,7 @@ import { useFormWithValidation } from '../../../hooks/useFormWithValidation';
 import Form from '../../common/Form/Form';
 import { mainApi } from '../../../utils/MainApi';
 import { UserContext } from '../../../contexts/UserContext';
+import { EMAIL_VALIDATION_PATTERN } from '../../../constants/constants';
 import "./Register.css";
 
 const Register = () => {
@@ -45,7 +46,9 @@ const Register = () => {
 
   return (
     <main className="register">
-      <img src={headerLogo} alt="Logo" className="register__header-logo" />
+      <Link to={routes.home.path} >
+        <img src={headerLogo} alt="Logo" className="register__header-logo" />
+      </Link>
       <h1 className="register__title">Добро пожаловать!</h1>
       <Form onSubmit={handleFormSubmit}>
         <label htmlFor="name" className="form__label">Имя
@@ -67,6 +70,7 @@ const Register = () => {
             id="email"
             name="email"
             type="email"
+            pattern={EMAIL_VALIDATION_PATTERN}
             className={`form__input ${errors.email && 'form__input_type_error'}`}
             required
             value={email}

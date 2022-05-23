@@ -1,9 +1,12 @@
 import MovieCardList from '../../common/MovieCardList/MovieCardList';
 import Search from '../../common/Search/Search';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { mainApi } from '../../../utils/MainApi';
+import { UserContext } from '../../../contexts/UserContext';
 
 const SavedMovies = () => {
+  const { user } = useContext(UserContext);
+
   const [savedMovies, setSavedMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
 
@@ -13,8 +16,9 @@ const SavedMovies = () => {
   useEffect(() => {
     mainApi.getMovies()
       .then(movies => {
-        console.log(movies)
-        setSavedMovies(movies.map(movie => {
+        const moviesFilteredByOwner = movies.filter((movie) => movie.owner === user._id)
+
+        setSavedMovies(moviesFilteredByOwner.map(movie => {
           return { ...movie, isSaved: true, thumbnail: movie.thumbnail.replace('https://api.nomoreparties.co', '') }
         }));
       })
@@ -39,7 +43,11 @@ const SavedMovies = () => {
         searchQuery={searchQuery}
         handleSearchQueryChange={handleSearchQueryChange}
       />
-      <MovieCardList movies={searchedMovies} setSavedMovies={setSavedMovies} />
+      {searchedMovies.length > 0 ? (
+        <MovieCardList movies={searchedMovies} setSavedMovies={setSavedMovies} />
+      ) : (
+        <p className="movies__error">Ничего не найдено</p>
+      )}
     </main>
   );
 };

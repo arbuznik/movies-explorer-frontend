@@ -7,6 +7,7 @@ import { UserContext } from '../../../contexts/UserContext';
 import Form from '../../common/Form/Form';
 import { useFormWithValidation } from '../../../hooks/useFormWithValidation';
 import { mainApi } from '../../../utils/MainApi';
+import { EMAIL_VALIDATION_PATTERN } from '../../../constants/constants';
 
 const Profile = () => {
   const { user, setUserContext } = useContext(UserContext);
@@ -54,25 +55,26 @@ const Profile = () => {
                 maxLength={30}
                 onChange={handleChange}
               />
-              <p className="form__input-error">{errors.name}</p>
+              <p className="form__input-error">{errors.newName}</p>
             </label>
             <label htmlFor="email" className="form__label">E-mail
               <input
                 id="email"
                 type="email"
                 name="newEmail"
+                pattern={EMAIL_VALIDATION_PATTERN}
                 className={`form__input ${errors.email && 'form__input_type_error'}`}
                 required
                 value={newEmail}
                 onChange={handleChange}
               />
-              <p className="form__input-error">{errors.email}</p>
+              <p className="form__input-error">{errors.newEmail}</p>
             </label>
             {apiError && <p className="form__input-error">{apiError}</p>}
             <button
               type="submit"
               className="form__button"
-              disabled={!isValid}
+              disabled={!isValid || (name === newName && email === newEmail)}
             >
               Сохранить
             </button>

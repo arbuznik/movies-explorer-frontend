@@ -1,11 +1,12 @@
 import AuthHeader from './AuthHeader/AuthHeader';
 import NonAuthHeader from './NonAuthHeader/NonAuthHeader';
-import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../../contexts/UserContext';
 
 const Header = () => {
-  const { pathname } = useLocation();
+  const { user } = useContext(UserContext)
 
-  return pathname !== '/' ? (
+  return user ? (
     <AuthHeader />
   ) : (
     <NonAuthHeader />

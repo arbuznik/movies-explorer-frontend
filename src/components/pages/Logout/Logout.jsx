@@ -13,7 +13,7 @@ const Logout = () => {
       .then(() => {
         setUserContext(null);
         localStorage.clear();
-        navigate(routes.login.path);
+        navigate(routes.home.path);
       })
       .catch(mainApi.handleApiError)
   })
