@@ -18,4 +18,4 @@ export const moviesOnResolution = {
 
 export const SHORT_MOVIE_DURATION = 40;
 
-export const EMAIL_VALIDATION_PATTERN = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+export const EMAIL_VALIDATION_PATTERN = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"

@@ -1,13 +1,16 @@
 import MovieCardList from '../../common/MovieCardList/MovieCardList';
 import Search from '../../common/Search/Search';
 import './Movies.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import { fetchBeatMoviesAndSaveToStorage } from '../../../utils/fetchBeatMovies';
 import { determineMoviesToRender } from '../../../utils/determineMoviesToRender';
 import { mainApi } from '../../../utils/MainApi';
+import { UserContext } from '../../../contexts/UserContext';
 
 const Movies = () => {
+  const { user } = useContext(UserContext);
+
   const [movies, setMovies] = useState([]);
   const [populatedMovies, setPopulatedMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
@@ -38,7 +41,9 @@ const Movies = () => {
   useEffect(() => {
     mainApi.getMovies()
       .then(movies => {
-        setSavedMovies(movies);
+        const moviesFilteredByOwner = movies.filter((movie) => movie.owner === user._id)
+
+        setSavedMovies(moviesFilteredByOwner);
       })
       .catch(error => mainApi.handleApiError(error))
   }, [])
