@@ -9,17 +9,30 @@ import Logout from '../pages/Logout/Logout';
 import Register from '../pages/Register/Register';
 import NotFound from '../pages/NotFound/NotFound';
 import routes from '../../config/routes';
+import ProtectedRoute from '../common/ProtectedRoute/ProtectedRoute';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path={routes.home.path} element={<Main />} />
-          <Route path={routes.movies.path} element={<Movies />} />
-          <Route path={routes.savedMovies.path} element={<SavedMovies />} />
-        </Route>
-        <Route path={routes.profile.path} element={<Profile />} />
+          <Route element={<Layout />}>
+            <Route path={routes.home.path} element={<Main />} />
+            <Route path={routes.movies.path} element={
+              <ProtectedRoute>
+                <Movies />
+              </ProtectedRoute>
+            } />
+            <Route path={routes.savedMovies.path} element={
+              <ProtectedRoute>
+                <SavedMovies />
+              </ProtectedRoute>
+            } />
+          </Route>
+          <Route path={routes.profile.path} element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
         <Route path={routes.login.path} element={<Login />} />
         <Route path={routes.register.path} element={<Register />} />
         <Route path={routes.logout.path} element={<Logout />} />

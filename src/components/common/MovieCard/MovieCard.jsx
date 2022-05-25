@@ -1,9 +1,18 @@
 import { useLocation } from 'react-router-dom';
 import routes from '../../../config/routes';
 import './MovieCard.css';
+import { mainApi } from '../../../utils/MainApi';
+import { useEffect, useState } from 'react';
 
-const MovieCard = ({ movie }) => {
-  const { image, nameRU, duration, saved } = movie;
+const MovieCard = ({ movie, setSavedMovies }) => {
+  const { image, nameRU, duration, isSaved } = movie;
+  const thumbnail = image?.formats?.thumbnail?.url || movie.thumbnail;
+
+  const [isMovieSaved, setIsMovieSaved] = useState(false);
+
+  useEffect(() => {
+    setIsMovieSaved(isSaved)
+  }, [isSaved])
 
   const pathname = useLocation().pathname;
 
@@ -14,7 +23,27 @@ const MovieCard = ({ movie }) => {
   if (pathname === routes.savedMovies.path) {
     buttonClassName += ' movie-card__save-button_type_saved-cross';
   } else {
-    buttonClassName += ` ${saved && 'movie-card__save-button_type_saved'}`
+    buttonClassName += ` ${isMovieSaved && 'movie-card__save-button_type_saved'}`
+  }
+
+  const handleSaveClick = () => {
+   if (isMovieSaved) {
+      mainApi.deleteMovie(movie._id)
+        .then(_ => {
+          setIsMovieSaved(!isMovieSaved);
+          setSavedMovies(movies => movies.filter(m => m._id !== movie._id))
+        })
+        .catch(mainApi.handleApiError)
+    }
+
+    if (!isMovieSaved) {
+      mainApi.saveMovie(movie)
+        .then(res => {
+          console.log('movie saved: ', res)
+          setIsMovieSaved(!isMovieSaved);
+        })
+        .catch(mainApi.handleApiError)
+    }
   }
 
   return (
@@ -24,9 +53,13 @@ const MovieCard = ({ movie }) => {
         <p className="movie-card__subtitle">{durationString}</p>
         <button
           type="button"
-          className={buttonClassName} />
+          className={buttonClassName}
+          onClick={handleSaveClick}
+        />
       </div>
-      <img src={`https://api.nomoreparties.co${image.formats.thumbnail.url}`} alt={nameRU} className="movie-card__cover" />
+      <a href={movie.trailerLink} className="movie-card__link" target="_blank">
+        <img src={`https://api.nomoreparties.co${thumbnail}`} alt={nameRU} className="movie-card__cover" />
+      </a>
     </article>
   );
 };

@@ -51,6 +51,11 @@
   background: url("../../../images/save-button-icon-type-saved-cross.svg") no-repeat center;
 }
 
+.movie-card__link {
+  width: 100%;
+  height: 100%;
+}
+
 .movie-card__cover {
   width: 100%;
   height: 100%;

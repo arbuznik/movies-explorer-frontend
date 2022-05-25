@@ -17,10 +17,20 @@
   background-color: #dcdcdc;
 }
 
+.movies__error {
+  padding: 40px 10px 30px;
+  max-width: 1140px;
+  margin: auto;
+}
+
 @media (min-width: 768px) {
   .movies__show-more {
     grid-column: 1 / span 2;
     padding: 0 30px;
+  }
+
+  .movies__error {
+    padding: 40px 30px 30px;
   }
 }
 
@@ -28,5 +38,9 @@
   .movies__show-more {
     grid-column: 1 / span 3;
     padding: 0 70px;
+  }
+
+  .movies__error {
+    padding: 70px 70px;
   }
 }
