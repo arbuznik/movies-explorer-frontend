@@ -46,7 +46,7 @@ const Movies = () => {
         setSavedMovies(moviesFilteredByOwner);
       })
       .catch(error => mainApi.handleApiError(error))
-  }, [])
+  }, [user._id])
 
   useEffect(() => {
     setRenderMovies(searchedMovies.slice(0, renderMoviesNumber + renderMoreMoviesNumber))
@@ -62,7 +62,7 @@ const Movies = () => {
     if (!localStorageMovies && !movies.length) {
       fetchBeatMoviesAndSaveToStorage(setIsLoading, setSearchError, setMovies);
     }
-  }, []);
+  }, [movies.length]);
 
   useEffect(() => {
     const storageShortMoviesToggle = localStorage.getItem('shortMoviesSwitch');

@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
         })
         .catch(mainApi.handleApiError);
     }
-  }, [setUserContext, user]);
+  }, [setUserContext, user, navigate]);
 
   return user ? children : <Navigate to={routes.home.path} />
 };

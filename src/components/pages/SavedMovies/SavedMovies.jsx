@@ -23,7 +23,7 @@ const SavedMovies = () => {
         }));
       })
       .catch(error => mainApi.handleApiError(error))
-  }, [])
+  }, [user._id])
 
   const handleShortMoviesToggle = (value) => {
     setShortMoviesSwitch(value);

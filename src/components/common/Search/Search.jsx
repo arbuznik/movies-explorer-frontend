@@ -17,7 +17,7 @@ const Search = ({
   useEffect(() => {
     setSearchValue(searchQuery);
     setSearchedMovies(getFilteredMovies(movies, searchQuery, shortMoviesSwitch));
-  }, [movies, searchQuery, shortMoviesSwitch]);
+  }, [movies, searchQuery, shortMoviesSwitch, setSearchedMovies]);
 
   const handleShortMoviesSwitchClick = evt => {
     handleShortMoviesToggle(evt.target.checked);
