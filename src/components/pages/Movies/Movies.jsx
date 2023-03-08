@@ -58,6 +58,10 @@ const Movies = () => {
     if (localStorageMovies) {
       setMovies(localStorageMovies);
     }
+
+    if (!localStorageMovies && !movies.length) {
+      fetchBeatMoviesAndSaveToStorage(setIsLoading, setSearchError, setMovies);
+    }
   }, []);
 
   useEffect(() => {
@@ -104,10 +108,6 @@ const Movies = () => {
   const handleSearchQueryChange = (value) => {
     setSearchQuery(value);
     localStorage.setItem('searchQuery', JSON.stringify(value));
-
-    if (!movies.length) {
-      fetchBeatMoviesAndSaveToStorage(setIsLoading, setSearchError, setMovies);
-    }
   }
 
   if (!movies.length) {
@@ -136,7 +136,7 @@ const Movies = () => {
         searchQuery={searchQuery}
         handleSearchQueryChange={handleSearchQueryChange}
       />
-      {searchError && !isLoading && <p className="movies__error">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.</p>}
+      {searchError && !isLoading && <p className="movies__error">Error. Could be a connection error. Please wait for a minute and try again.</p>}
       {isLoading && <Preloader />}
 
       {!searchError && !isLoading && (
@@ -144,11 +144,11 @@ const Movies = () => {
           {renderMovies.length > 0 ? (
             <MovieCardList movies={renderMovies} />
           ) : (
-            <p className="movies__error">Ничего не найдено</p>
+            <p className="movies__error">Nothing found</p>
           )}
           {searchedMovies.length > 0 && renderMovies.length < searchedMovies.length && (
             <div className="movies__show-more">
-              <button className="movies__show-more-button" onClick={handleLoadMoreClick}>Ещё</button>
+              <button className="movies__show-more-button" onClick={handleLoadMoreClick}>Load more</button>
             </div>
           )}
         </>

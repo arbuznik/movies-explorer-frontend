@@ -14,7 +14,6 @@ const Register = () => {
   const [apiError, setApiError] = useState(null);
   const { user, setUserContext } = useContext(UserContext);
   const navigate = useNavigate();
-
   const { name = '', email = '', password = '' } = userData;
 
   const handleFormSubmit = (evt) => {
@@ -29,7 +28,7 @@ const Register = () => {
                 .then(user => {
                   setUserContext(user);
                 })
-                .catch(mainApi.handleApiError);
+                .catch(err => setApiError(err));
             }
           })
       })
@@ -49,9 +48,9 @@ const Register = () => {
       <Link to={routes.home.path} >
         <img src={headerLogo} alt="Logo" className="register__header-logo" />
       </Link>
-      <h1 className="register__title">Добро пожаловать!</h1>
+      <h1 className="register__title">Welcome!</h1>
       <Form onSubmit={handleFormSubmit}>
-        <label htmlFor="name" className="form__label">Имя
+        <label htmlFor="name" className="form__label">Name
           <input
             id="name"
             name="name"
@@ -78,7 +77,7 @@ const Register = () => {
           />
           <p className="form__input-error">{errors.email}</p>
         </label>
-        <label htmlFor="password" className="form__label">Пароль
+        <label htmlFor="password" className="form__label">Password
           <input
             id="password"
             name="password"
@@ -91,17 +90,17 @@ const Register = () => {
           />
           <p className="form__input-error">{errors.password}</p>
         </label>
-        {apiError && <p className="form__input-error">{apiError.message}</p>}
+        {apiError && <p className="form__input-error">{apiError}</p>}
         <button
           type="submit"
           className="form__button"
           disabled={!isValid}
         >
-          Зарегистрироваться
+          Register
         </button>
       </Form>
-      <p className="register__text">Уже зарегистрированы?
-        <Link className="register__link" to={routes.login.path}> Войти</Link>
+      <p className="register__text">Already registered?
+        <Link className="register__link" to={routes.login.path}> Login</Link>
       </p>
     </main>
   );

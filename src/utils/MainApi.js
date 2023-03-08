@@ -103,12 +103,13 @@ class MainApi {
       .then(this._handleApiResponse)
   }
 
-  _handleApiResponse(response) {
+  async _handleApiResponse(response) {
     if (response.ok) {
       return response.json();
     }
 
-    return Promise.reject(`Ошибка: ${response.status}`);
+    const err = await response.json();
+    return Promise.reject(err.message);
   }
 
   handleApiError(error) {
@@ -117,7 +118,7 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'https://api.arbuznik.diploma.nomoredomains.xyz',
+  baseUrl: 'https://movies-explorer-2p8x.onrender.com',
   headers: {
     'Content-Type': 'application/json'
   }

@@ -21,6 +21,7 @@
   padding: 40px 10px 30px;
   max-width: 1140px;
   margin: auto;
+  text-align: center;
 }
 
 @media (min-width: 768px) {

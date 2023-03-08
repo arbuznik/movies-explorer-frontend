@@ -5,7 +5,7 @@ import { mainApi } from '../../../utils/MainApi';
 import { useEffect, useState } from 'react';
 
 const MovieCard = ({ movie, setSavedMovies }) => {
-  const { image, nameRU, duration, isSaved } = movie;
+  const { image, nameEN, duration, isSaved } = movie;
   const thumbnail = image?.formats?.thumbnail?.url || movie.thumbnail;
 
   const [isMovieSaved, setIsMovieSaved] = useState(false);
@@ -16,7 +16,7 @@ const MovieCard = ({ movie, setSavedMovies }) => {
 
   const pathname = useLocation().pathname;
 
-  const durationString = `${Math.floor(duration / 60)}ч ${duration % 60}м`;
+  const durationString = `${Math.floor(duration / 60)}h ${duration % 60}m`;
 
   let buttonClassName = 'movie-card__save-button';
 
@@ -38,8 +38,7 @@ const MovieCard = ({ movie, setSavedMovies }) => {
 
     if (!isMovieSaved) {
       mainApi.saveMovie(movie)
-        .then(res => {
-          console.log('movie saved: ', res)
+        .then(_ => {
           setIsMovieSaved(!isMovieSaved);
         })
         .catch(mainApi.handleApiError)
@@ -49,7 +48,7 @@ const MovieCard = ({ movie, setSavedMovies }) => {
   return (
     <article className="movie-card">
       <div className="movie-card__header">
-        <h2 className="movie-card__title">{nameRU}</h2>
+        <h2 className="movie-card__title">{nameEN}</h2>
         <p className="movie-card__subtitle">{durationString}</p>
         <button
           type="button"
@@ -57,8 +56,8 @@ const MovieCard = ({ movie, setSavedMovies }) => {
           onClick={handleSaveClick}
         />
       </div>
-      <a href={movie.trailerLink} className="movie-card__link" target="_blank">
-        <img src={`https://api.nomoreparties.co${thumbnail}`} alt={nameRU} className="movie-card__cover" />
+      <a href={movie.trailerLink} className="movie-card__link" target="_blank" rel="noreferrer">
+        <img src={`https://api.nomoreparties.co${thumbnail}`} alt={nameEN} className="movie-card__cover" />
       </a>
     </article>
   );

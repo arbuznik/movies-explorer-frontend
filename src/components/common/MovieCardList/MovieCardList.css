@@ -10,7 +10,7 @@
 @media (min-width: 768px) {
   .movie-card-list {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 2fr);
     column-gap: 30px;
     row-gap: 36px;
     padding: 40px 30px 30px;
@@ -20,7 +20,7 @@
 @media (min-width: 1280px) {
   .movie-card-list {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
     row-gap: 30px;
     padding: 70px 70px;

@@ -46,7 +46,7 @@ const SavedMovies = () => {
       {searchedMovies.length > 0 ? (
         <MovieCardList movies={searchedMovies} setSavedMovies={setSavedMovies} />
       ) : (
-        <p className="movies__error">Ничего не найдено</p>
+        <p className="movies__error">Nothing found</p>
       )}
     </main>
   );

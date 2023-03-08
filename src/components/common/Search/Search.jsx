@@ -30,13 +30,9 @@ const Search = ({
   const handleSearchSubmit = (evt) => {
     evt.preventDefault();
 
-    if (!searchValue) {
-      setError('Нужно ввести ключевое слово');
-    } else {
-      setError(null);
-      handleSearchQueryChange(searchValue);
-      setSearchedMovies(getFilteredMovies(movies, searchValue, shortMoviesSwitch));
-    }
+    setError(null);
+    handleSearchQueryChange(searchValue);
+    setSearchedMovies(getFilteredMovies(movies, searchValue, shortMoviesSwitch));
   }
 
   return (
@@ -48,7 +44,7 @@ const Search = ({
         <input
           type="text"
           className="search__form-input"
-          placeholder="Фильм"
+          placeholder="Movie name"
           value={searchValue}
           onChange={handleSearchChange}
         />
@@ -64,7 +60,7 @@ const Search = ({
           onChange={handleShortMoviesSwitchClick}
         />
         <label htmlFor="movie-switch" className="search__short-movie-label" />
-        <p className="search__short-movie-text">Короткометражки</p>
+        <p className="search__short-movie-text">Short movies</p>
       </div>
       <div className="search__divider" />
     </section>

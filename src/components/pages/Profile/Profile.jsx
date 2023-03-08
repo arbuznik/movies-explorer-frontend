@@ -40,10 +40,10 @@ const Profile = () => {
     <>
       <AuthHeader />
       <main className="profile">
-        <h1 className="profile__title">{`Привет, ${name}!`}</h1>
+        <h1 className="profile__title">{`Hello, ${name}!`}</h1>
         {isEditing ? (
           <Form onSubmit={handleFormSubmit}>
-            <label htmlFor="name" className="form__label">Имя
+            <label htmlFor="name" className="form__label">Name
               <input
                 id="name"
                 name="newName"
@@ -76,14 +76,14 @@ const Profile = () => {
               className="form__button"
               disabled={!isValid || (name === newName && email === newEmail)}
             >
-              Сохранить
+              Save
             </button>
           </Form>
         ) : (
           <>
             <div className="profile__info">
               <div className="profile__info-item">
-                <p className="profile__info-subtitle">Имя</p>
+                <p className="profile__info-subtitle">Name</p>
                 <p className="profile__info-value">{name}</p>
               </div>
               <div className="profile__info-divider" />
@@ -92,8 +92,8 @@ const Profile = () => {
                 <p className="profile__info-value">{email}</p>
               </div>
             </div>
-            <button className="profile__edit-button" onClick={handleEditProfile}>Редактировать</button>
-            <Link className="profile__logout-link" to={routes.logout.path}>Выйти из аккаунта</Link>
+            <button className="profile__edit-button" onClick={handleEditProfile}>Edit info</button>
+            <Link className="profile__logout-link" to={routes.logout.path}>Logout</Link>
           </>
         )}
       </main>

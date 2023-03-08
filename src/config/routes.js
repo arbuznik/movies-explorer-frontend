@@ -1,34 +1,34 @@
 const routes = {
   home: {
-    title: 'Учебный проект студента факультета Веб-разработки.',
+    title: 'Movies explorer',
     path: '/',
   },
   movies: {
-    title: 'Фильмы',
+    title: 'Movies',
     path: '/movies',
   },
   savedMovies: {
-    title: 'Сохраненные фильмы',
+    title: 'Saved movies',
     path: '/saved-movies',
   },
   profile: {
-    title: 'Профиль',
+    title: 'Profile',
     path: '/profile',
   },
   register: {
-    title: 'Регистрация',
+    title: 'Register',
     path: '/signup',
   },
   login: {
-    title: 'Авторизация',
+    title: 'Login',
     path: '/signin',
   },
   logout: {
-    title: 'Выход',
+    title: 'Logout',
     path: '/signout',
   },
   notFound: {
-    title: 'Страница не найдена',
+    title: 'Not found',
     path: '*',
   }
 }

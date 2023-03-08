@@ -19,7 +19,7 @@ class MoviesApi {
       return response.json();
     }
 
-    return Promise.reject(`Ошибка: ${response.status}`);
+    return Promise.reject(`Error: ${response.status}`);
   }
 
   handleApiError(error) {

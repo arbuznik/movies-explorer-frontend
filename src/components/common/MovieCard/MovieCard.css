@@ -35,7 +35,7 @@
   grid-column: 2;
   width: 30px;
   height: 30px;
-  background: #F9F9F9 url("../../../images/save-button-icon.svg") no-repeat center;
+  background: #b0b0b0 url("../../../images/save-button-icon.svg") no-repeat center;
   border-radius: 50%;
   border: none;
   align-self: center;
@@ -49,6 +49,7 @@
 
 .movie-card__save-button_type_saved-cross {
   background: url("../../../images/save-button-icon-type-saved-cross.svg") no-repeat center;
+  background-size: 20px 20px;
 }
 
 .movie-card__link {

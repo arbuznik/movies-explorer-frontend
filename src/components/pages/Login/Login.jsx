@@ -27,7 +27,7 @@ const Login = () => {
             .then(user => {
               setUserContext(user);
             })
-            .catch(mainApi.handleApiError);
+            .catch(err => setApiError(err));
         }
       })
       .catch(error => {
@@ -46,7 +46,7 @@ const Login = () => {
       <Link to={routes.home.path} >
         <img src={headerLogo} alt="Logo" className="login__header-logo" />
       </Link>
-      <h1 className="login__title">Рады видеть!</h1>
+      <h1 className="login__title">Welcome back!</h1>
       <Form onSubmit={handleFormSubmit}>
         <label htmlFor="email" className="form__label">E-mail
         <input
@@ -61,7 +61,7 @@ const Login = () => {
         />
         <p className="form__input-error">{errors.email}</p>
         </label>
-        <label htmlFor="password" className="form__label">Пароль
+        <label htmlFor="password" className="form__label">Password
         <input
           id="password"
           type="password"
@@ -80,11 +80,11 @@ const Login = () => {
           className="form__button"
           disabled={!isValid}
         >
-          Войти
+          Login
         </button>
       </Form>
-      <p className="login__text">Ещё не зарегистрированы?
-        <Link className="login__link" to={routes.register.path}> Регистрация</Link>
+      <p className="login__text">Don't have an account?
+        <Link className="login__link" to={routes.register.path}> Register</Link>
       </p>
     </main>
   );

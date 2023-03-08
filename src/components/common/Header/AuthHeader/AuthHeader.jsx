@@ -27,11 +27,11 @@ const AuthHeader = () => {
   const headerContent = showSideMenu ? (
     <>
       <nav className="header__links">
-        <NavLink to={routes.movies.path} className={({ isActive }) => isActive ? "header__link header__link_type_active" : "header__link"}>Фильмы</NavLink>
-        <NavLink to={routes.savedMovies.path} className={({ isActive }) => isActive ? "header__link header__link_type_active" : "header__link"}>Сохранённые фильмы</NavLink>
+        <NavLink to={routes.movies.path} className={({ isActive }) => isActive ? "header__link header__link_type_active" : "header__link"}>Movies</NavLink>
+        <NavLink to={routes.savedMovies.path} className={({ isActive }) => isActive ? "header__link header__link_type_active" : "header__link"}>Saved movies</NavLink>
       </nav>
       <Link className="profile__account-link" to={routes.profile.path}>
-        <p className="profile__account-link-text">Аккаунт</p>
+        <p className="profile__account-link-text">Account</p>
         <div className="profile__account-lint-icon" />
       </Link>
     </>
