@@ -13,11 +13,13 @@ const Register = () => {
   const { values: userData, errors, isValid, handleChange } = useFormWithValidation();
   const [apiError, setApiError] = useState(null);
   const { user, setUserContext } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { name = '', email = '', password = '' } = userData;
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
+    setIsLoading(true);
 
     mainApi.register(userData)
       .then(() => {
@@ -27,6 +29,7 @@ const Register = () => {
               mainApi.getLoggedInUser()
                 .then(user => {
                   setUserContext(user);
+                  navigate(routes.movies.path);
                 })
                 .catch(err => setApiError(err));
             }
@@ -35,13 +38,14 @@ const Register = () => {
       .catch(error => {
         setApiError(error)
       })
+      .finally(() => setIsLoading(false))
   }
 
   useEffect(() => {
     if (user) {
       navigate(routes.movies.path);
     }
-  })
+  }, [user, navigate])
 
   return (
     <main className="register">
@@ -94,9 +98,9 @@ const Register = () => {
         <button
           type="submit"
           className="form__button"
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
         >
-          Register
+          {isLoading ? "Registering..." : "Register"}
         </button>
       </Form>
       <p className="register__text">Already registered?

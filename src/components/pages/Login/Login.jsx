@@ -13,12 +13,14 @@ const Login = () => {
   const { values: userData, errors, isValid, handleChange } = useFormWithValidation();
   const [apiError, setApiError] = useState(null);
   const { user, setUserContext } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const { email = '', password = '' } = userData;
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
+    setIsLoading(true);
 
     mainApi.login(userData)
       .then(res => {
@@ -33,6 +35,7 @@ const Login = () => {
       .catch(error => {
         setApiError(error)
       })
+      .finally(() => setIsLoading(false))
   }
 
   useEffect(() => {
@@ -78,9 +81,9 @@ const Login = () => {
         <button
           type="submit"
           className="form__button"
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
         >
-          Login
+          {isLoading ? "Hold on..." : "Login"}
         </button>
       </Form>
       <p className="login__text">Don't have an account?
