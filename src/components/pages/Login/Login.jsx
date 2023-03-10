@@ -83,7 +83,7 @@ const Login = () => {
           className="form__button"
           disabled={!isValid || isLoading}
         >
-          {isLoading ? "Hold on..." : "Login"}
+          {isLoading ? "Hold on, backend is warming up..." : "Login"}
         </button>
       </Form>
       <p className="login__text">Don't have an account?

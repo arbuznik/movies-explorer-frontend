@@ -38,8 +38,9 @@ const MovieCard = ({ movie, setSavedMovies }) => {
 
     if (!isMovieSaved) {
       mainApi.saveMovie(movie)
-        .then(_ => {
+        .then(savedMovie => {
           setIsMovieSaved(!isMovieSaved);
+          setSavedMovies(state => [...state, savedMovie])
         })
         .catch(mainApi.handleApiError)
     }

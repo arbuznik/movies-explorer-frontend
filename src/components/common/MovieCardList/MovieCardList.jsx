@@ -6,7 +6,7 @@ const MovieCardList = ({ movies, setSavedMovies }) => {
   return (
     <section className="movie-card-list">
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} setSavedMovies={setSavedMovies} />
+        <MovieCard key={movie.id || movie._id} movie={movie} setSavedMovies={setSavedMovies} />
       ))}
     </section>
   );

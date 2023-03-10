@@ -142,7 +142,7 @@ const Movies = () => {
       {!searchError && !isLoading && (
         <>
           {renderMovies.length > 0 ? (
-            <MovieCardList movies={renderMovies} />
+            <MovieCardList movies={renderMovies} setSavedMovies={setSavedMovies} />
           ) : (
             <p className="movies__error">Nothing found</p>
           )}

@@ -100,7 +100,7 @@ const Register = () => {
           className="form__button"
           disabled={!isValid || isLoading}
         >
-          {isLoading ? "Registering..." : "Register"}
+          {isLoading ? "Hold on, backend is warming up..." : "Register"}
         </button>
       </Form>
       <p className="register__text">Already registered?
