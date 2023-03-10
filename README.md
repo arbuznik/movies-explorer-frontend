@@ -1,8 +1,14 @@
-# Movies frontend
+# Movies-explorer frontend
 
-https://arbuznik.diploma.nomoredomains.xyz/
+This is frontend bit of a movie explorer MERN app.
 
-## Scripts
+You can find backend bit here: 
+https://github.com/arbuznik/movies-explorer-api
 
-`npm start`
-`npm test`
+## Read about the project
+
+And learn more about architecture in my blog:
+https://arbuznik.com/projects/movie-explorer/
+
+## Live demo
+https://arbuznik-movie-explorer.netlify.app/
